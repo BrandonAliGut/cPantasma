@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     
     'User',
     'views_templates',
-    'Base_register'
+    'Base_register',
 ]
 
 MIDDLEWARE = [
