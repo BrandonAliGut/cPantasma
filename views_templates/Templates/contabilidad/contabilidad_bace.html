@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Administracion</h1>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h4>Numero de contribuyentes: 1000</h4>
+                           
+                            
+                           
+
+                        </div>
+                        <div class="col-lg-4">
+                            <form method="POST" class="  " enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <div class="form-group input-group d-flex align-content-center">
+                                    <input id="my-input" placeholder="Add yeard" value="" class="form-control"
+                                        type="text" name="empresa" _mstplaceholder="157365">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-primary  ">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-check"></i>
+                                                <span class="text">Guardar</span>
+                                            </span>
+                                        </button>
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </form>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="row justify-content-center align-items-center g-2">
+                                <div class="col-lg-6">
+                                    <div class="card">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="card-title">Negocios registrados</h5>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">Cantidad: 70</p>
+                                            <p class="card-text">Rurales: 30</p>
+                                            <p class="card-text">Rurales: 40</p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="card-title">Cobradores</h5>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row justify-content-center align-items-center g-2">
+                                            <div class="col">
+                                                <p class="card-text">Ronny</p>
+                                                <p class="card-text">Cantidad: 70</p>
+
+                                            </div>
+                                            <div class="col">
+                                                <p class="card-text">Darwin</p>
+                                                <p class="card-text">Cantidad: 70</p>
+
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div></div>
+                                
+                            </div>
+                            
+                           
+
+                        </div>
+                        
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

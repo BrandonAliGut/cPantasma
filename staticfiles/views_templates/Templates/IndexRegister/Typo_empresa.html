@@ -1,0 +1,277 @@
+{% extends 'IndexRegister/tables_base.html' %}
+{% load static %}
+{% block TableAdd %}
+
+<div class="row justify-content-center align-items-center g-2 py-2">
+    
+<div class="row justify-content-center align-items-center g-2 py-2">
+    <div class="col-sm-12">
+        <label for="my-input">Add Cobros</label>
+    </div>
+
+    
+
+    <form  method="post" class="row justify-content-center align-items-center g-2 py-2">
+        {% csrf_token %}
+        <div class="col-sm-8 ">
+            <div class="row justify-content-center align-items-center g-2">
+                <div class="col-lg-4"><button type="button" class="btn btn-light" data-bs-toggle="modal"  data-bs-target="#Empresas">
+                    Agreagar o modificar
+                </button></div>
+                <div class="col-lg-8">
+                    {% if  empresa and  direccion %}
+        <h2 class="h2 font-weight-bolder text-right"> {{empresa}}</h2>
+        
+        <p class="sub-menu text-end">{{direccion}}</p>
+            
+        {% endif %}
+                </div>
+               
+            </div>
+            
+            
+            
+        </div>
+        
+        
+            
+        {% if  empresa and  direccion  %}
+          <div class="row col-sm-8 p-2">
+
+
+            {% for key, value in request.session.sumary.items %}
+
+
+            {% if key != 'id' %}
+
+
+            <div class="col-sm-10  ">
+                <div class="row">
+                    <div class="col-sm-1 d-flex justify-content-center">
+                       <a href="/add_contribu/add/new" class="btn btn-info btn-circle ">
+                    <i class="fas fa-eraser"></i>
+                </a> 
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="form-group input-group d-flex align-content-center">
+                    <select name="{{value.controlfor}}"  class="form-control">
+                        <option value=""> </option>
+                        {% for e in cuentas %}
+                        <option value="{{e.id}}">{{e.cuenta}}</option>
+
+                        {%endfor%}
+
+                    </select>
+
+                </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <input id="my-input" placeholder="Cantidad" class="form-control"  type="text"
+                        name="{{value.control}}">
+                </div>
+            </div>
+            {% endif %}
+
+
+
+
+
+            {% endfor %}
+
+        </div>
+        <div class="col-sm-8 d-flex justify-content-end ">
+            {% if id %}
+
+            <a href="/add_contribu/add/new" class="btn btn-info btn-circle m-1">
+                <i class="fas fa-eraser"></i>
+            </a>
+            <a href="{% url 'add_trabajo' 'add' None 1 %}" class="btn btn-info btn-circle m-1">
+                <i class="fas fa-at"></i>
+            </a>
+
+            <a href="{% url 'add_trabajo' 'add' id 1 %}" class="btn btn-info btn-circle m-1">
+                <i class="fas fa-address">+</i>
+            </a>
+
+            {% endif %}
+            <input class="btn btn-info btn-close-white justify-content-center m-1 fas fa-save" type="submit" value="">
+         
+
+        </div>
+        {% endif %}
+        
+
+       
+
+
+
+    </form>
+
+    <div class="modal fade" id="Empresas" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">add empresa nueva</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-body">
+                <form action="Typo_empresa.html" method="get">
+                    <div class="row justify-content-center align-items-center g-2">
+                        <div class="col-sm-12"><input id="my-input" placeholder="agregar Una empresa"
+                                value="{{request.GET.nombre_empresa}}" class="form-control " type="text" name="nombre_empresa">
+                        </div>
+                        <div class="col-sm-12"><input id="my-input" placeholder="agregar direccion" value="{{request.GET.direccion}}" class="form-control "
+                                type="text" name="direccion">
+                        </div>
+                    </div>
+                    <div class=" btn-circle badge-info justify-content-center align-center align-content-end "  >
+                        <button  class="btn btn-info btn-circle  fa fa-save " type="submit"> </button>
+                     
+                    </div>
+                    
+                   
+                </form>
+            </div>
+            
+            
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- Base de cobros no tocar  -->
+
+
+    
+    <div class="b-example-divider border-bottom-dark border-1"></div>
+
+    <div class="row justify-content-end px-3">
+        <!-- Tasks Card Example -->
+        
+            
+        {% if Matricula %}
+        <div class="row justify-content-center px-3 m-2">
+
+            
+            {% for e in Matricula %}
+
+            <a href="#" class="col-xl-3 col-md-6 mb-4 text-decoration-none   " 
+            
+                >
+                <div class="card border-left-info shadow h-100 py-2 {% if e.suma == '0'   %}  bg-gray-700  {% elif  not e.negocio.activo %} bg-danger  {% endif %}">
+                    
+                    <div class="card-body ">
+                        <div class="d-flex justify-content-md-end">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <i class="fas fa-trash position-relative  "></i>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
+                                </div>
+                                
+                               
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">{{e.negocio.Negocio}}
+                                </div>
+                                
+                                <div class="row no-gutters align-items-center">
+    
+                                    <div class="col">
+                                        <div class="row justify-content-center align-items-center g-2">
+                                            <div class="col">
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-400">IMI</div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="h5 mb-0 mr-3 font-weight-bold    text-gray-400">{{e.negocio.IMI}}</div>
+                                            </div>
+    
+                                        </div>
+                                        <div class="row justify-content-center align-items-center g-2">
+                                            <div class="col">
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-400">Basura</div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-400">{{e.negocio.Basura}}</div>
+                                            </div>
+    
+                                        </div>
+                                        <div class="row justify-content-center align-items-center g-2">
+                                            <div class="col">
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-400">Matricula</div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-400">{{e.precio}}</div>
+                                            </div>
+    
+                                        </div>
+    
+    
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-auto">
+                                <p class="h5 mb-0 mr-3 font-weight-bold text-gray-500" >  {{e.suma}} </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                        
+                    
+                </div>
+            </a>
+            
+            {% endfor %}
+            
+
+            
+            <!-- Tasks Card Example -->
+            
+        </div>
+
+        
+            
+        {% endif %}
+            
+        
+    </div>
+</div>
+
+
+                
+                
+                
+                
+                
+{% endblock %}

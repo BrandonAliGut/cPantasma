@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <form class="form-inline">
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </form>
+
+                <!-- Topbar Search -->
+                <form method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        
+                       
+                            
+                                <div class="input-group d-flex align-content-center">
+                                <input  type="search" placeholder="Search" aria-label="Search" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search"  aria-describedby="basic-addon2" name="buscar_table" value="{{request.GET.buscar_table}}">
+                                </div>
+                            
+
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="Search">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+
+                <!-- Topbar Navbar -->
+                <select name="dataTable_length" aria-controls="dataTable" class=" w-25 custom-select custom-select-sm form-control form-control-sm">
+                    <option value="10">2001</option>
+                    <option value="25">2002</option>
+                    <option value="50">2003</option>
+                    <option value="100">2004</option>
+                    <option value="10">2005</option>
+                    <option value="25">2006</option>
+                    <option value="50">2007</option>
+                    <option value="100">2008</option>
+                    <option value="10">2009</option>
+                    <option value="25">2010</option>
+                    <option value="50">2011</option>
+                    <option value="100">2012</option>
+                    <option value="10">2013</option>
+                    <option value="25">2014</option>
+                    <option value="50">2015</option>
+                    <option value="100">2016</option>
+
+                </select>
+                <a href="{% url 'add_contribuyente' 'add' 'new' %}" class="btn btn-info btn-circle">
+                                        <i class="fas fa-info-circle"></i>
+                                    </a>
+
+            </nav>
+            <!-- End of Topbar -->
+            <div class="row justify-content-end px-3">
+                
+                
+                {% block MenuCobrador %}
+                
+                {% endblock %}
+
+                
+
+
+
+
+
+            </div>
+            <!-- Begin Page Content -->
+            <!-- /.container-fluid -->
+            
+            {% block TableAdd %}
+                
+            {% endblock %}
+                
+
+        </div>
+        <!-- End of Main Content -->
+
+
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+{% endblock %}

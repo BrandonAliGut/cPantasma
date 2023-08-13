@@ -1,0 +1,130 @@
+{% extends 'IndexRegister/tables_base.html' %}
+{% load static %}
+
+
+
+{% block MenuCobrador %}
+    {% if user.is_superuser %}
+    <!-- Tasks Card Example -->
+    <div class="row justify-content-end px-3">
+        {% include '../bloques/menu.html' %}
+    </div>
+    {% endif %}
+                
+{% endblock %}
+{% block TableAdd %}
+                
+            
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+        </div>
+        <div class="input-group">
+            <div class="row justify-content-center align-items-center g-2">
+                <div class="col-4"><input type="text" class="form-control bg-light border-0 small" placeholder="filtrar ..."
+                    aria-label="Search" aria-describedby="basic-addon2"></div>
+                <div class="col-4">
+                   
+                    <select id="my-select" class="form-control" name="">
+                            
+                            <option></option>
+                            <option>R</option>
+                            <option>D</option>
+                        </select>
+                    
+                </div>
+                <div class="col-2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+                
+            
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <!-- En esta parte 
+                            ba la lista 
+                            del proyecto 
+                        
+                        -->
+                    <div class="list-group">
+                        <p class="h3 text-black-50 fa-bold border-bottom ">Brandon</p>
+
+                        
+                        {% for cyente in contribuyente %}
+                        <li class="list-group-item  {% cycle 'bg-light' 'bg-gray-400' %}">
+
+                            <div class="row w-100">
+                                <a class="col-10 text-decoration-none"
+                                    href="/addInformacion/info_update/11">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class=" text-black-50 ">{{cyente.nombre}}</h5>
+                                        </div>
+                                        <div class="col">
+                                            <p class="fa fa-black-tie text-black-50" aria-hidden="true">
+                                                {{cyente.codigo}}
+                                            </p>
+                                        </div>
+                                        <div class="col">
+                                            <p class="fa fa-black-tie text-black-50" aria-hidden="true">
+                                                {{cyente.Comunidad}}
+                                            </p>
+                                        </div>
+                                        <div class="col">
+                                            <p class="fa fa-black-tie text-black-50" aria-hidden="true">
+                                                {{cyente.N_cedula}}
+                                            </p>
+                                        </div>
+                                        </div>
+                                    
+                                    
+                                </a>
+
+                                <div class="col-1 ">
+                                    <div class="d-flex" style="width: 20px;">
+                                
+                                        <a href="{% url 'add_contribuyente' 'update' cyente.pk %}" class="btn btn-info btn-circle text-decoration-none">
+                                            <i class="fas fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-1 ">
+                                    <div class="d-flex" style="width: 20px;">
+                                
+                                        <a href="/EstadoContri" class="btn btn-warning btn-circle text-decoration-none">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                </div>
+
+
+                        </li>
+                        {% endfor %}
+                            
+                        
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

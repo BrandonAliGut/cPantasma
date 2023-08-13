@@ -1,0 +1,173 @@
+{% extends 'IndexRegister/tables_base.html' %}
+{% load static %}
+{% block TableAdd %}
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Nuevo/Edict</h1>
+
+
+    <!-- ForContribuyente -->
+
+    <div class="row d-flex justify-content-center  g-2">
+        <div class="col-sm-9 ">
+            
+            <form  method="POST" class="row g-3 card mb-4 p-3 border-left-info" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="my-select">Cobrador</label>
+                    <select name="cobrador" class="form-select "  id="validationServer04" >
+                           
+                        <option value="0">-----</option>
+                        {% for e in cobrador %}
+                        <option  
+                        {% if e.id == ID %}
+                            selected
+                            value="{{e.id}}">{{e.Perfil_for.Nombre}}</option>
+                        {% endif %}
+                            value="{{e.id}}">{{e.Perfil_for.Nombre}}</option>
+                      {%endfor%}
+                      
+                      </select>
+                      
+                </div>
+                
+                <div class="form-group">
+                    <label for="my-input">Nombre</label>
+                    {{model_at.nombre}}
+                    {% if cbuyen %}
+                    
+                    <input name="nombre"  value="{{cbuyen.nombre}}" class="form-control" type="text" name="{{cbuyen.nombre}}">
+                    {% else %}
+                    <input name="nombre" value="{{request.GET.nombre}}" class="form-control" type="text" name="">
+                    {% endif %}
+                        
+                    
+                    
+                </div>
+                <div class="form-group">
+                    <label for="my-input">Codigo</label>
+                    {% if cbuyen %}
+                    
+                    <input name="codigo" value="{{cbuyen.codigo}}" class="form-control" type="text" name="">
+                    {% else %}
+                    <input name="codigo" value="{{request.GET.codigo}}" class="form-control" type="text" name="">
+                    {% endif %}
+                    
+                </div>
+                <div class="form-group">
+
+                    <label for="my-input">N° Cedula</label>
+                    {% if cbuyen %}
+                    
+                    <input name="NCedula" value="{{cbuyen.N_cedula}}" class="form-control" type="text" >
+                    {% else %}
+                    <input name="NCedula" value="{{request.GET.NCedula}}" class="form-control" type="text" >
+                    {% endif %}
+                    
+
+                </div>
+                <div class="form-group">
+                    <label for="my-input">Comunidad</label>
+
+                    {% if cbuyen %}
+                    
+                    <input name="Comunidad" value="{{cbuyen.Comunidad}}" class="form-control" type="text" name="">
+                    {% else %}
+                    <input name="Comunidad" value="{{request.GET.Comunidad}}" class="form-control" type="text" name="">
+                    {% endif %}
+                    
+                </div>
+                <div class="form-group">
+                    <label for="my-input">Direccion</label>
+
+                    {% if cbuyen %}
+                    
+                    <input name="Direccion" value="{{cbuyen.Direccion}}" class="form-control" type="text" name="">
+                    {% else %}
+                    <input name="Direccion" value="{{request.GET.Direccion}}" class="form-control" type="text" name="">
+                    {% endif %}
+                    
+
+                </div>
+
+                <div class="card mb-4 d-flex w-100 justify-content-center ">
+                    <div class="row d-flex  w-100 justify-content-center align-content-end  ">
+                        <div class="col-6 d-flex justify-content-center w-50">
+                            <button type="submit" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                                <span class="text">Guardar</span>
+                            </button>
+                            
+                        </div>
+                        
+                        <div class="col-6 d-flex justify-content-center w-50">
+                            <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Eliminar</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+
+        {% if cbuyen %}
+        <div class="col-lg-3 ">
+            <div class="card mb-4 p-3 border-left-danger ">
+                
+                <div class="form-group d-grid justify-content-center">
+                    <a href="{% url 'add_trabajo' 'add' cbuyen.pk None %}" class="btn btn-info btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                        <span class="text">Agregando Pagos</span>
+                    </a>
+                </div>
+                <div class="form-group ">
+                    <div class="row justify-content-center border-left-primary text-center p-1  rounded-5 border-4  align-items-center g-2">
+                        
+                        {% if Cuenta %}
+                        
+                        {% for c in Cuenta %}
+                        <div class="col-auto col-sm-auto  border-1 m-1 rounded-5 card">{{c.Negocio}}</div>
+                        {% endfor %}
+                        
+                        {% elif not Cuenta %}
+                        
+                        <div class="col-12">no tiene atributos</div>
+                        
+                        
+                            
+                        {% endif %}
+                            
+                        
+                        
+                        
+                    </div>
+
+                    
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        {% else %}
+        {% endif %}
+    </div>
+
+
+
+
+</div>
+{% endblock %}
