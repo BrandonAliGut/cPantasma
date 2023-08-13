@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import dj_database_url
+import os 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-lro6%n%)^ku=sp6rae1e3qlq(p9$-09%xb5u27c&5_e1_$xu-e'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False").lower == "true"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -83,7 +84,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-DATABASES['default'] = dj_database_url.parse('postgres://cpantasmaregiter_user:BO5ySCKd8Ghw2CqyxoOsg0wgbpg60pFD@dpg-cjc578ndb61s73cq6lf0-a.oregon-postgres.render.com/cpantasmaregiter')
+database_url = os.environ.get("DATABASES_URL")
+DATABASES['default'] = dj_database_url.parse(database_url)
 
 #postgres://cpantasmaregiter_user:BO5ySCKd8Ghw2CqyxoOsg0wgbpg60pFD@dpg-cjc578ndb61s73cq6lf0-a.oregon-postgres.render.com/cpantasmaregiter
 
