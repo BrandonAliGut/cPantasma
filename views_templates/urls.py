@@ -14,7 +14,5 @@ urlpatterns = [
     path("EstadoContri", Estado_Contribuyente, name="EstadoContri"),
     path("add_trabajos/<str:typeaction>/<str:pk>/<str:add>", trabajo_type_pagos, name="add_trabajo"),
     
-    
-
 ]
 
