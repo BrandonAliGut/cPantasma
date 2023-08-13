@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'User.apps.UserConfig',
-    'views_templates.apps.ViewsTemplatesConfig',
-    'Base_register.apps.BaseRegisterConfig',
+    'User',
+    'views_templates',
+    'Base_register',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'views_templates.urls'
+ROOT_URLCONF = 'Registro.urls'
 
 TEMPLATES = [
     {
