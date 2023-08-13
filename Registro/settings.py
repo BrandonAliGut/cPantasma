@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'Registro.urls'
+ROOT_URLCONF = 'views_templates.urls'
 
 TEMPLATES = [
     {
