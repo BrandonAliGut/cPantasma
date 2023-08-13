@@ -3,7 +3,7 @@ from .views import *
 from django.conf.urls.static import static
 from django.conf import settings
 
-from .view_index import index, Admin_page_home,IndexRegister,contribuyente,Estado_Contribuyente,trabajo_type_pagos
+from .views import index, Admin_page_home,IndexRegister,contribuyente,Estado_Contribuyente,trabajo_type_pagos
 #index home
 urlpatterns = [
     path("",index, name="home"),
@@ -18,5 +18,3 @@ urlpatterns = [
 
 ]
 
-
-urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
